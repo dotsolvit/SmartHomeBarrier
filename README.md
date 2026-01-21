@@ -74,3 +74,13 @@ To compile the project you need:
   #define SH_WIFI_SSID "xxxxxxxxx"   
   #define SH_WIFI_PASS "xxxxxxxxx"   
 
+## ✅ Conclusion
+
+The project demonstrates the capabilities of programming the ESP8266 microcontroller, monitoring and controlling external devices, creating smart home elements, creating a web server on the ESP8266, and remotely controlling the microcontroller via a WiFi network using a website from a smartphone or computer.
+
+P.S.  
+This project was developed as a student coursework based on the results of the Smart Home, ESP8266 and GITHUB courses at Nanit Academy https://www.linkedin.com/company/nanitrobot/
+
+A short video demonstrating how this project works is presented in a publication on LinkedIn
+https://www.linkedin.com/feed/update/urn:li:activity:7415375095264608256/
+ 
