@@ -2,7 +2,7 @@
  * @brief Smart Home Barrier
  * @author Dotsenko Oleksandr
  * @date 2026-01-08
- * https://github.com/dotsolvit-maker/SmartHomeBarrier
+ * https://github.com/dotsolvit/SmartHomeBarrier
 **********************************************************************
 Для компіляції проекту потрібно:
 To compile the project you need:
