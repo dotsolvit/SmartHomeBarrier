@@ -78,6 +78,8 @@ To compile the project you need:
 
 The project demonstrates the capabilities of programming the ESP8266 microcontroller, monitoring and controlling external devices, creating smart home elements, creating a web server on the ESP8266, and remotely controlling the microcontroller via a WiFi network using a website from a smartphone or computer.
 
+I wish you every success!
+
 P.S.  
 This project was developed as a student coursework based on the results of the Smart Home, ESP8266 and GITHUB courses at Nanit Academy https://www.linkedin.com/company/nanitrobot/
 
