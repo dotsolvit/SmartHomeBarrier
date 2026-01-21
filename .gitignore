@@ -1,2 +1,4 @@
-# Ігноруємо папку
+# Ігноруємо папку (Ignore the folder)
 sources/
+# Ігноруємо файл (Ignore the file)
+sh_ssid.h
