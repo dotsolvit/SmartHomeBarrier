@@ -34,3 +34,21 @@ The website looks like this:
 
 ![Real Photo](/images/sh_barrier_web.png)
 
+# 🔌 Elements and electrical schematic
+
+The following elements were used in the project:
+
+• microcontroller WiFi ESP8266 Witty Cloud
+
+• ultrasonic distance sensor HC-SR04 (ultrasonic sonar)
+
+• 28BYJ-48 stepper motor with ULN2003 driver
+
+• 4-bit seven-segment LED indicator with TM1637 driver
+
+• RGB LED module KY-016
+
+The elements are connected according to the electrical diagram:
+
+![Real Photo](/images/Sheet_Electrical.png)
+
