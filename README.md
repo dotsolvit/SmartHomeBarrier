@@ -10,3 +10,27 @@
 
 ## 🏠 Brief description
 This is an educational project that implements smart home barrier control on the ESP8266 Witty Cloud WiFi microcontroller using: an Ultrasonic HC-SR04 distance sensor, a 28BYJ-48 stepper motor (with a ULN2003 driver), a TM1637 7-segment display, and an RGB LED.
+
+## ⚙️ Main features
+Barrier control is implemented in automatic mode based on a signal from a distance sensor and in manual mode - from a website.
+
+• When an object approaches the sensor at a specified distance, the barrier opens and the timer countdown starts.
+
+• After the countdown is complete, the barrier closes.
+
+• Manual opening of the barrier is done by pressing the OPEN button on the website.
+
+• Before the timer ends, the barrier can be closed by pressing the CLOSE button.
+
+• Pressing the BLOCK button places the barrier in blocking mode, when automatic opening is not possible.
+
+• Approaching an object in blocking mode does not cause the barrier to open.
+
+• You can open the barrier in lock mode by pressing the OPEN button on the website.
+
+• After the timer counts down, the barrier closes.
+
+The website looks like this:
+
+![Real Photo](/images/sh_barrier_web.png)
+
