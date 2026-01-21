@@ -34,7 +34,7 @@ The website looks like this:
 
 ![Real Photo](/images/sh_barrier_web.png)
 
-# 🔌 Elements and electrical schematic
+## 🔌 Elements and electrical schematic
 
 The following elements were used in the project:
 
@@ -51,4 +51,26 @@ The following elements were used in the project:
 The elements are connected according to the electrical diagram:
 
 ![Real Photo](/images/Sheet_Electrical.png)
+
+## 👓 Program code
+
+The project program was created in the Arduino IDE. The code is presented in the gh_barrier folder.
+
+To compile the project you need:
+
+1. install Arduino IDE
+
+2. install board manager ESP8266  
+   File - Preferenses:   
+   Additional boards manager URLs:  
+   http://arduino.esp8266.com/stable/package_esp8266com_index.json   
+   Boards manager: ESP8266 by ESP8266 Community  
+   Tolls Board: "NodeMCU 1.0 (ESP-12E Module)"   
+
+3. installing additional library:  
+    TM1637 Driver by AKJ   
+
+4. create and add the sh_ssid.h file with your WIFI network settings to the gh_barrier folder:   
+  #define SH_WIFI_SSID "xxxxxxxxx"   
+  #define SH_WIFI_PASS "xxxxxxxxx"   
 
