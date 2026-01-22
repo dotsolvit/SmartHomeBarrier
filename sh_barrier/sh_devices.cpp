@@ -1,6 +1,9 @@
 // Директиви включення файлів конфігурації розумного будинку (Directives for Including Smart Home Configuration Files)
 #include "sh_devices.hpp"
 #include "sh_sendhtml.hpp"
+//Задаємо основні налаштування системи
+//Set the basic system settings
+#include "sh_config.hpp"
 
 #include "sh_ssid.h" //Окремий файл який містить: (A separate file containing:)
 //#define SH_WIFI_SSID "******"
@@ -71,11 +74,9 @@ void stepper_init(void) {
 // Функція оберту крокового двигуна на 90 градусів за годинниковою стрілкою
 // Function for Rotating the Stepper Motor 90 Degrees Clockwise
 void stepper_forward(void) {
-// Для оберту на 90 градусів кроковий двигун має пройти 32 кроків
-// For a 90-degree rotation, the stepper motor needs to complete 32 steps.
-  for (short k = 0; k < 32; k++) {
-    // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
-    // One step for the motor is the 3ms activation of each pin by setting it to HIGH in sequence.
+  for (short k = 0; k < ROTATE_90_DEGREES_STEPS; k++) {
+    // Один крок для двигуна - подача сигналу на кожен пін на 10 мс по черзі
+    // One step for the motor is the 10 ms activation of each pin by setting it to HIGH in sequence.
     for (short i = 0; i <= 3; i++) {
       digitalWrite(step_pin[i], HIGH);
       delay(10);
@@ -89,11 +90,9 @@ void stepper_forward(void) {
 // Функція оберту крокового двигуна на 90 градусів проти годинникової стрілки
 // Function for a 90-Degree Counterclockwise Rotation of the Stepper Motor
 void stepper_backward(void) {
-// Для оберту на 90 градусів кроковий двигун має пройти 32 кроків
-// For a 90-degree rotation, the stepper motor needs to complete 32 steps.
-  for (short k = 0; k < 32; k++) {
-    // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
-    // One step for the motor is the 3ms activation of each pin by setting it to HIGH in sequence.
+  for (short k = 0; k < ROTATE_90_DEGREES_STEPS; k++) {
+    // Один крок для двигуна - подача сигналу на кожен пін на 10 мс по черзі
+    // One step for the motor is the 10 ms activation of each pin by setting it to HIGH in sequence.
     for (short i = 3; i >= 0; i--) {
       digitalWrite(step_pin[i], HIGH);
       delay(10);
@@ -135,13 +134,14 @@ void sensor_init(void){
 //Функція контролю дистанції (Distance control function)
 void sensor_distance(void){
   if(sh_status == B_CLOSED or sh_status == B_OPEN){
-    if(millis()- sensor_time > 500) { //контроль не частіше 500 мс
-      sensor_time = millis(); //Фіксуємо час контролю відстані
-      digitalWrite(TRIGPIN, HIGH);  //Відправка імпульсу на тригер датчика
-      delayMicroseconds(10);        //Затримка 10 мікросекунд
-      digitalWrite(TRIGPIN, LOW);   // Зупинка відправки імпульсу
+    if(millis()- sensor_time > DISTANCE_CONTROL_WAITING) { //контроль не частіше DISTANCE_CONTROL_WAITING
+      sensor_time = millis(); //Фіксуємо час контролю відстані(Fix the distance control time)
+      digitalWrite(TRIGPIN, HIGH);  //Відправка імпульсу на тригер датчика(Sending a pulse to the sensor trigger)
+      delayMicroseconds(SENSOR_PULSE_DURATION);  //Тривалість імпульсу сенсора, мкс(Sensor pulse duration, µs)
+      digitalWrite(TRIGPIN, LOW);   // Зупинка відправки імпульсу(Stop sending a pulse)
       //Зчитування часу відбиття звуку і перетворення його у ввідстань в см
-      int cm = pulseIn(ECHOPIN, HIGH) / 58;
+      //Reading the time of sound reflection and converting it into distance in cm
+      int cm = pulseIn(ECHOPIN, HIGH) / COEF_DISTANCE_CALC;
       if(cm <= OPENING_DISTANCE){
         if (sh_status == B_CLOSED) sh_status = B_TO_OPEN; //Переходимо у статус відкриття (We are moving to the opening status)
         if (sh_status == B_OPEN) sh_timer_start();//Функція перезапуску таймера (Timer restart function)

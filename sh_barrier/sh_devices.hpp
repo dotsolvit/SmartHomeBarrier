@@ -2,11 +2,6 @@
 #include <ESP8266WebServer.h> //Бібліотека для створення веб-сервера на ESP8266 (Library for creating a web server)
 #include <TM1637.h> //Бібліотека для драйвера TM1637 (Driver library)
 
-//Дистанція для відкривання бар'єру(Distance for opening the barrier)
-#define OPENING_DISTANCE 5
-//Час очікування(Waiting time)
-#define WAITING_TIME 6 //Час затримки до закриття бар'єру(Delay time before closing the barrier) 
-
 //Піни для крокового двигуна (Pins for the Stepper Motor)
 #define IN1 5    // Макрос піна 1 для крокового двигуна (Macro for Pin 1 of the Stepper Motor)
 #define IN2 4    // Макрос піна 2 для крокового двигуна (Macro for Pin 2 of the Stepper Motor)
