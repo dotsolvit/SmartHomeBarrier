@@ -45,11 +45,11 @@ String SendHTML(String mess) {
         <br>
         <hr width="320px">
 
-        <!-- Автоматичне оновлення сторінки кожні 2000мс Automatic page refresh every 1500ms -->
+        <!-- Автоматичне оновлення сторінки кожні 2000мс Automatic page refresh every 2000ms -->
         <script> setTimeout(function(){location.reload(); }, 2000); </script>
 
     </body>
     </html>
   )";
-  return html; //Повернення готової HTML-сторінки
+  return html; //Повернення готової HTML-сторінки (Returning the finished HTML page)
 }

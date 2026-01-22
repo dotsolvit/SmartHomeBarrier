@@ -67,7 +67,7 @@ void sh_timer(void); //Функція керування за часом (Time c
 void Web_starting(void);
 //Обробка кліентських запитів(Processing client requests)
 void handle_Client(void);
-//Обробник головної сторінки
+//Обробник головної сторінки (Home page handler)
 void handle_OnConnect(void);
 //Дії при натисканні Open (Actions when pressing Open)
 void handle_open(void);

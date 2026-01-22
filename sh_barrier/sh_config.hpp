@@ -16,3 +16,6 @@
 //Коефіцієнт для розрахунку відстані
 //Coefficient for distance calculation
 #define COEF_DISTANCE_CALC 58
+//Налаштування яскравості дисплєя
+//Adjusting the display brightness
+#define DISPLAY_BRIGHTNESS 4

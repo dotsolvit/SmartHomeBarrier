@@ -128,7 +128,7 @@ void sensor_init(void){
   sensor_time = 0; //Обнулюємо час (Resetting time)
   pinMode(TRIGPIN, OUTPUT);
   pinMode(ECHOPIN, INPUT);
-  digitalWrite(TRIGPIN, LOW); //Встановлення значення LOW для триггера
+  digitalWrite(TRIGPIN, LOW); //Встановлення значення LOW для триггера (Setting the trigger to LOW)
   delay(1000); //Затримка для стабілізації датчика відстані(Delay for stabilization of the distance sensor)
 }
 //Функція контролю дистанції (Distance control function)
@@ -153,36 +153,36 @@ void sensor_distance(void){
 //TM display
 //Функція ініціалізації ТМ1637 (ТМ1637 initialization function)
 void tmdisplay_init(void){
-  tm.begin(); //Ініціалізація дісплея
-  tm.setBrightness(4); //Налаштування яскравості дисплєя (4)
+  tm.begin(); //Ініціалізація дісплея (Display initialization)
+  tm.setBrightness(DISPLAY_BRIGHTNESS); //Налаштування яскравості дисплєя(Adjusting the display brightness)
   display = ""; //
-  tm.clearScreen(); //Очищення дисплея
+  tm.clearScreen(); //Очищення дисплея(Cleaning the display)
 }
 //Функція Функція відображення інформації ТМ1637 (ТМ1637 information display function)
 void tmdisplay(void){
   String display_new;
   switch (sh_status) { // Аналізуємо статус для відображення (Analyzing the status for display)
     case B_CLOSED: //
-      display_new = "CLSD"; //Відображення тексту CLSD на дісплеі
+      display_new = "CLSD"; //Відображення тексту CLSD на дісплеі (Displaying text)
       break;
     case B_BLOCK: //
-      display_new = "BLOC"; //Відображення тексту BLOC на дісплеі
+      display_new = "BLOC"; //Відображення тексту BLOC на дісплеі (Displaying text)
       break;
     case B_TO_OPEN: //
-      display_new ="----"; //Відображення тексту ---- на дісплеі
+      display_new ="----"; //Відображення тексту ---- на дісплеі (Displaying text)
       break;
     case B_TO_CLOSE: //
-      display_new ="----"; //Відображення тексту ---- на дісплеі
+      display_new ="----"; //Відображення тексту ---- на дісплеі (Displaying text)
       break;
     case B_OPEN: //
-      if(sh_counter == WAITING_TIME) display_new ="OPEN"; //Відображення тексту OPEN на дісплеі
-      else display_new =String(sh_counter); //Відображення sh_counter на дісплеі
+      if(sh_counter == WAITING_TIME) display_new ="OPEN"; //Відображення тексту OPEN на дісплеі (Displaying text)
+      else display_new =String(sh_counter); //Відображення sh_counter на дісплеі(Displaying sh_counter)
       break;      
   }
   if(display != display_new){
     display = display_new; //Оновлюємо display (Updating the display string)
-    tm.clearScreen(); //Очищення дисплея
-    tm.display(display); //Відображення тексту
+    tm.clearScreen(); //Очищення дисплея (Cleaning the display)
+    tm.display(display); //Відображення тексту (Displaying text)
   }
 }
 
@@ -191,35 +191,35 @@ void tmdisplay(void){
 void traffic_light_init(void){
   pinMode(RGB_RED, OUTPUT);
   pinMode(RGB_GRN, OUTPUT);
-  digitalWrite(RGB_RED, LOW); // Вимкнути червоний
-  digitalWrite(RGB_GRN, LOW); // Вимкнути зелений
+  digitalWrite(RGB_RED, LOW); // Вимкнути червоний (Turn off red)
+  digitalWrite(RGB_GRN, LOW); // Вимкнути зелений (Turn off green)
 }
 //Функція світлофору (Traffic light function)
 void traffic_light(void){
   // Аналізуємо статус для відображення на світлофорі (Analyzing the status for display on the Traffic light)
   if(sh_status == B_OPEN) {
-    digitalWrite(RGB_RED, LOW); // Вимкнути червоний
-    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений
+    digitalWrite(RGB_RED, LOW); // Вимкнути червоний (Turn off red)
+    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений (Turn on green)
   }
   else if(sh_status == B_TO_OPEN or sh_status == B_TO_CLOSE){
-    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний
-    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений  
+    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний (Turn on red)
+    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений (Turn on green) 
   }
   else{
-    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний
-    digitalWrite(RGB_GRN, LOW); // Вимкнути зелений      
+    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний (Turn on red)
+    digitalWrite(RGB_GRN, LOW); // Вимкнути зелений (Turn off green)     
   }
 }
 //Функція мигання світлофору (Traffic light blinking function)
 void traffic_light_blinking(void){
   static bool blinking = true;
   if(blinking){
-    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний
-    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений  
+    digitalWrite(RGB_RED, HIGH); // Увімкнути червоний (Turn on red)
+    digitalWrite(RGB_GRN, HIGH); // Увімкнути зелений (Turn on green) 
   }
   else{
-    digitalWrite(RGB_RED, LOW); // Вимкнути червоний
-    digitalWrite(RGB_GRN, LOW); // Вимкнути зелений
+    digitalWrite(RGB_RED, LOW); // Вимкнути червоний (Turn off red)
+    digitalWrite(RGB_GRN, LOW); // Вимкнути зелений (Turn off green)
   }
   blinking = !blinking;
 }
@@ -249,19 +249,19 @@ void sh_timer(void){
 //Web
 //Запуск веб-сервера(Starting the web server)
 void Web_starting(void){
-  //Налаштування маршрутів для веб-сервера
-  server.on("/", handle_OnConnect); //Головна сторінка
+  //Налаштування маршрутів для веб-сервера(Configuring routes for the web server)
+  server.on("/", handle_OnConnect); //Головна сторінка (Home page)
   server.on("/open", handle_open);  //Дії при натисканні Open (Actions when pressing Open)
   server.on("/close", handle_close); //Дії при натисканні Close (Actions when pressing Close)
   server.on("/block", handle_block); //Дії при натисканні Block (Actions when pressing Block)
-  server.onNotFound(handle_NotFound); //Обробка невідомих запитів
-  server.begin(); //Запуск веб-сервера 
+  server.onNotFound(handle_NotFound); //Обробка невідомих запитів (Handling unknown requests)
+  server.begin(); //Запуск веб-сервера (Starting the web server)
 }
 //Обробка кліентських запитів(Processing client requests)
 void handle_Client(void){
   server.handleClient(); 
 }
-//Обробник головної сторінки
+//Обробник головної сторінки (Home page handler)
 void handle_OnConnect() {
   server.send(200, "text/html", SendHTML(messages[sh_status])); //Відправлення HTML-сторінки(Sending an HTML page)
 }
