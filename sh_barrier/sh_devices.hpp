@@ -82,5 +82,4 @@ void handle_close(void);
 void handle_block(void);
 //Обробник 404 (коли запитаний маршрут не знайдено)
 void handle_NotFound(void);
-//Фунуція для генерації HTML-сторінки
-String SendHTML(String);
+
