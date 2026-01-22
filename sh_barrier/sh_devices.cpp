@@ -258,14 +258,14 @@ void handle_Client(void){
 }
 //Обробник головної сторінки
 void handle_OnConnect() {
-  server.send(200, "text/html", SendHTML(messages[sh_status])); //Відправлення HTML-сторінки
+  server.send(200, "text/html", SendHTML(messages[sh_status])); //Відправлення HTML-сторінки(Sending an HTML page)
 }
 //Дії при натисканні Open (Actions when pressing Open)
 void handle_open(void) {
   if(sh_status == B_CLOSED or sh_status == B_BLOCK) {
     sh_status = B_TO_OPEN; //Переходимо у статус відкриття (We are moving to the opening status)
   }
-  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку
+  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку(Redirect to the main page)
   server.send(303);
 }
 //Дії при натисканні Close (Actions when pressing Close)
@@ -274,7 +274,7 @@ void handle_close(void) {
     sh_counter == 0; sh_time = 0; //Зупеняємо таймер(Stop the timer)
     sh_status = B_TO_CLOSE; //Переходимо у статус закриття (We are moving to the closing status)  
   }
-  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку
+  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку(Redirect to the main page)
   server.send(303);
 }
 //Дії при натисканні Open (Actions when pressing Open)
@@ -282,10 +282,10 @@ void handle_block() {
   if(sh_status == B_CLOSED) {
     sh_status = B_BLOCK; //Переходимо в статус блокування бар'єру (We are entering the barrier blocking status)
   }
-  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку
+  server.sendHeader("Location", "/"); //Перенаправлення на головну сторінку(Redirect to the main page)
   server.send(303);
 }
-//Обробник 404 (коли запитаний маршрут не знайдено)
+//Обробник 404 коли запитаний маршрут не знайдено(404 handler when requested route not found)
 void handle_NotFound() {
-    server.send(404, "text/html", "Not Founf"); //Відправка відповіді 404
+    server.send(404, "text/html", "Not Founf"); //Відправка відповіді 404(Sending a 404 response)
 }

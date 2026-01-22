@@ -80,6 +80,6 @@ void handle_open(void);
 void handle_close(void);
 //Дії при натисканні Open (Actions when pressing Open)
 void handle_block(void);
-//Обробник 404 (коли запитаний маршрут не знайдено)
+///Обробник 404 коли запитаний маршрут не знайдено(404 handler when requested route not found)
 void handle_NotFound(void);
 
