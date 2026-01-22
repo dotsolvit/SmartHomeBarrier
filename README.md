@@ -54,7 +54,7 @@ The elements are connected according to the electrical diagram:
 
 ## 👓 Program code
 
-The project program was created in the Arduino IDE. The code is presented in the gh_barrier folder.
+The project program was created in the Arduino IDE. The code is presented in the sh_barrier folder.
 
 To compile the project you need:
 
@@ -70,7 +70,7 @@ To compile the project you need:
 3. installing additional library:  
     TM1637 Driver by AKJ   
 
-4. create and add the sh_ssid.h file with your WIFI network settings to the gh_barrier folder:   
+4. create and add the sh_ssid.h file with your WIFI network settings to the sh_barrier folder:   
   #define SH_WIFI_SSID "xxxxxxxxx"   
   #define SH_WIFI_PASS "xxxxxxxxx"   
 
