@@ -59,8 +59,9 @@ void WiFi_connecting(void) {
 //Stepper Motor functions
 //Функція ініціалізації портів крокового двигуна(Stepper motor ports initialization function)
 void stepper_init(void) {
-  for (short k = 0; k < 4; k++)   // Налаштування пінів другого порта для крокового мотора через цикл та масив
-  {                               // Setting up the pins of the port 2 for a stepper motor using a "for" and an array
+  for (short k = 0; k < 4; k++) {  
+    // Налаштування пінів другого порта для крокового мотора через цикл та масив
+    // Setting up the pins of the port 2 for a stepper motor using a "for" and an array
     pinMode(step_pin[k], OUTPUT); // Налаштування пінів на режим "вихід" (Setting Pins to Output Mode)
     digitalWrite(step_pin[k], LOW); 
     // Вимикання пінів для базового положення шлагбаума (Turning Off Pins for the Barrier Gate to set base position)
@@ -72,8 +73,8 @@ void stepper_init(void) {
 void stepper_forward(void) {
 // Для оберту на 90 градусів кроковий двигун має пройти 32 кроків
 // For a 90-degree rotation, the stepper motor needs to complete 32 steps.
-  for (short k = 0; k < 32; k++) 
-  { // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
+  for (short k = 0; k < 32; k++) {
+    // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
     // One step for the motor is the 3ms activation of each pin by setting it to HIGH in sequence.
     for (short i = 0; i <= 3; i++) {
       digitalWrite(step_pin[i], HIGH);
@@ -90,8 +91,8 @@ void stepper_forward(void) {
 void stepper_backward(void) {
 // Для оберту на 90 градусів кроковий двигун має пройти 32 кроків
 // For a 90-degree rotation, the stepper motor needs to complete 32 steps.
-  for (short k = 0; k < 32; k++) 
-  { // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
+  for (short k = 0; k < 32; k++) {
+    // Один крок для двигуна - подача сигналу на кожен пін на 3мс по черзі
     // One step for the motor is the 3ms activation of each pin by setting it to HIGH in sequence.
     for (short i = 3; i >= 0; i--) {
       digitalWrite(step_pin[i], HIGH);
@@ -103,7 +104,11 @@ void stepper_backward(void) {
   }
 }
 // Функція для блокування шлагбаума (Function for Barrier Gate Locking)
-void stepper_lock(void) {for (short k = 0; k < 4; k++) { digitalWrite(step_pin[k], LOW); }}
+void stepper_lock(void) {
+  for (short k = 0; k < 4; k++) {
+    digitalWrite(step_pin[k], LOW);
+  }
+}
 // Функція керування шлагбаумом (Barrier control function)
 void stepper(void) {
   if(sh_status == B_TO_OPEN){
